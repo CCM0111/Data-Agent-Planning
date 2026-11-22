@@ -1,51 +1,42 @@
 # Data-Agent-Planning
 
-本目录是 2026-11-22 的 DataAgent 流程代码快照，包含 suitable30 的冻结数据划分。30 个数据集对应 31 个预测任务，NOMAD 包含两个目标。来源说明保存在任务清单及各任务的 task.json 中。
+最新 DataAgent 主流程，包含 suitable30 的 30 个数据集、31 个预测任务。
 
-## 安装
+## 安装与运行
 
-建议 Python 3.11。从本目录执行：
+建议 Python 3.11，在项目根目录执行：
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.data-agent.txt
 cp .env.example .env
+python -u run.py
 ```
 
-在 .env 中填写自己的 OPENAI_API_KEY。API 模型和地址由 config/workflow_skill_mcts.yaml 配置。requirements.data-agent.txt 提供基础依赖，environment_versions.json 记录打包环境的相关版本。
+在 .env 填写自己的 OPENAI_API_KEY。API 地址及模型由 config/main.yaml 配置。
+指定单个任务可使用 --task，输出目录可使用 --output。
 
-## 运行本次验证流程
+## 默认主流程
 
-```bash
-python -u scripts/validate_suitable30.py \
-  --cold-sequential --skip-failed \
-  --output results/suitable30_validation \
-  --env-file .env
-```
+初始生成五个方法，在 API 所选 action 对应的 coreset 上评价，按 coreset 分数选择前三个进行全量训练。
 
-顺序执行清单里的任务，从空 skill 经验库开始，完整轮次的经验写入共享数据库供后续检索。失败任务保留报错和已完成记录，继续下一个任务。再次执行同一命令可恢复未完成任务并跳过已记录失败的任务。
+后续每轮生成两个候选，在本轮 API 所选 action 对应的 coreset 上评价，仅将 coreset 排名第一的候选进行全量训练。按照既有深度策略，超过第 3 层时只生成一个候选并直接进行全量评估。
 
-初始生成五个方法，全部进行全量训练，扩展全量排名前三的方法。后续每轮生成两个候选，全部进行全量训练，选择全量最佳候选继续扩展，最多到第 2 层。每个完整任务包含 7 轮比较和 17 次全量评估。
+每轮采样包含受保护的 15% 引导样本，区域 action 作用于其余 85%。baseline 使用本轮重新构建的 coreset。在线执行只训练所选 action。
 
-每轮记录原始 85% 加保护的 15% coreset，以及选定区域上可用的 baseline、cover、gentle_cover、focus 对照。若 agent 选择 baseline，程序预先确定一个区域用于 action 对照。训练评分使用验证集，验证程序记录 test_access=false。
+默认最多 12 次成功全量评估，包括初始化三次，后续最多九次。失败次数及 API、时间限制可能使实际完成数减少。搜索以验证指标反馈，记录 test_access=false。
 
-方法轨迹、action 改动、排名、全量预测和奖励保存在输出目录。可以生成汇总：
+任务按清单顺序执行，共享从空库开始的 skill 经验。完整轮次写入经验，后续任务检索使用。发生异常时保留报错及断点并继续下一个任务。重新执行命令会跳过完成任务并尝试恢复其余任务。
 
-```bash
-python scripts/summarize_suitable30_validation.py results/suitable30_validation
-```
+## 数据
 
-常规流程入口为 run_data_agent_workflow.py 和 scripts/run_mcts_skill_campaign.py，可用 --help 查看参数。本次全候选、全 action 验证协议由 scripts/validate_suitable30.py 实现。
+datasets/suitable30/tasks.json 是任务清单，NOMAD 包含两个预测目标。各任务保留原训练、验证和测试划分。data_manifest.json 提供文件大小与 SHA-256，来源及说明保存在 task.json 和清单中。
 
-## 数据与复现
+数据通过 Git LFS 管理，克隆后运行 git lfs pull。代码遵循 LICENSE，数据使用条件应依据原始来源核对。
 
-datasets/suitable30/tasks.json 是可迁移的任务清单，各任务目录包含训练、验证、测试及已有协议文件。请在项目根目录运行命令。data_manifest.json 给出数据文件大小与 SHA-256。
+## 其他入口
 
-数据文件使用 Git LFS，克隆后需要运行 git lfs pull。代码使用仓库 LICENSE，数据使用条件请依据 task.json 中的原始来源核对。
+scripts/validate_suitable30.py 是单独的研究验证工具，会全量评估所有候选及多个 action。默认 run.py 调用 data_agent.mcts_skill_workflow.run_skill_task。
 
-本包包括运行需要的 data_agent 模块、入口脚本、配置和少量 InternAgent 模型适配依赖。最新的参数兼容、修复反馈和断点恢复代码已包含。检查覆盖配置加载、入口导入和数据完整性，完整数据集的重新训练需实际执行上述命令。
-
-## 当前入口说明
-
-本快照的上述运行命令启动全候选、全 action 验证程序。核心主流程代码已包含最新修改，但默认配置仍含校准和额外评估调度。严格的“初始 coreset 前三全量、后续 coreset 第一全量、只训练所选 action”默认入口仍待统一。
+environment_versions.json 记录打包环境相关版本。当前交付验证覆盖入口导入、配置加载和调度约束，完整主流程的真实 API 训练效果需通过运行得到。

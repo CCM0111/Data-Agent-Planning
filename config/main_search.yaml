@@ -1,0 +1,40 @@
+initialization_config: config/coverage_expanded.yaml
+search:
+  enabled: true
+  mcs_enabled: false
+  rollout_schedule: adaptive
+  staged_search: false
+  root_trials: false
+  base_expansions: null
+  max_expansions: 9
+  max_search_attempts: 24
+  max_rollout_attempts: 12
+  max_rollout_successes: 12
+  exploration_rounds:
+  - 3
+  - 6
+  calibration_rounds: []
+  independent_audit_round: 4
+  initial_candidates: 5
+  initial_keep: 3
+  expansion_candidates: 2
+  shortlist_cap: 1
+  max_low_fit_attempts: 240
+  max_api_calls: 120
+  max_wall_seconds: 259200
+  repair_attempts: 2
+  infrastructure_retries: 2
+  max_children_per_node: 3
+  max_depth: 12
+  exploration_constant: 1.4142135623730951
+  minimum_full_improvement: 0.0
+  backup_win_threshold: 0.25
+  second_rollout_every: 0
+  bootstrap_replicates: 1000
+  bootstrap_seed: 2026
+  mcs_alpha: 0.05
+memory:
+  enabled: true
+  default_count: 4
+  max_count: 6
+  token_budget: 18000
