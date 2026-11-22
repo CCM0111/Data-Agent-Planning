@@ -1,0 +1,39 @@
+{
+  "name": "regression30__spotify",
+  "dataset_id": "https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset",
+  "target": "popularity",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "按track_id去重，只用音频/曲风属性; 有界整数回归；同艺人依赖；只做当前热度解释. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "explicit",
+    "key",
+    "mode",
+    "time_signature",
+    "track_genre"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "spotify",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__spotify/preparation.json",
+  "preparation_audit_sha256": "897ce55ed087a3b2500cc23b79003ad1fa950f1c50563a4bf70fc85c9a84539c"
+}

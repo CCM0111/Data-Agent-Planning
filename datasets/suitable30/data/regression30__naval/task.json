@@ -1,0 +1,33 @@
+{
+  "name": "regression30__naval",
+  "dataset_id": "https://www.kaggle.com/datasets/elikplim/maintenance-of-naval-propulsion-plants-data-set",
+  "target": "compressor_decay",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "空白分隔无表头；只建一个输出任务; 模拟数据；此前广泛候选中已有记录，未作为已测任务. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "naval",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__naval/preparation.json",
+  "preparation_audit_sha256": "a579a2cb31a68d45d389e880ca0ebcb0524e276a5a996c31f0fe8e1e780add28"
+}

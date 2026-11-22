@@ -1,0 +1,44 @@
+model:
+  model_name: deepseek-flash
+  base_url: https://api.deepseek.com
+  api_key_env_var: OPENAI_API_KEY
+  max_tokens: 65536
+  temperature: 0.7
+  timeout: 600
+search:
+  rollouts: 12
+  branches:
+    EDA: 1
+    FE: 3
+    MT: 3  # 2 free + 1 fallback, or 2 free + 2 guided when the selector finds a source.
+  exploration: 1.414
+  prior_weight: 0.2
+  mt_improvements_per_parent: 2
+  cross_fe_retries: 1  # Global fixed-MT retries on existing FE; share feedback and rollout budgets.
+  fe_improvements: 1  # Maximum new FE branches for confirmed input incompatibilities.
+  fe_review_interval: 3  # Check every 3 completed rollouts; call LLM only for new unresolved issues.
+execution:
+  timeout: 120
+  max_repairs: 1
+experience:
+  enabled: true
+  directory: results/experience_library  # Relative to project root; one active entry per task.
+  top_k: 1  # One source frozen for both FE and MT.
+  max_backward_updates: 3  # Successful backward replacements per task; failures do not count.
+  similarity:
+    enabled: true
+    model_name: sentence-transformers/all-MiniLM-L6-v2
+    revision: c9745ed1d9f207416be6d2e6f8de32d1f16199bf
+    cache_folder: models/sentence_transformers
+    local_files_only: true
+    semantic_weight: 0.7
+    min_similarity: 0.60
+    min_semantic: 0.35
+    min_eda: 0.45
+    min_shared_features: 4
+    min_coverage: 0.5
+  max_prompt_chars: 6000  # Total compact JSON budget for retrieved stage views.
+
+backward_transfer:
+  enabled: true
+  directory: results/backward_transfers

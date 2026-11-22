@@ -1,0 +1,34 @@
+{
+  "name": "prepared36__nomad2018-predict-transparent-conductors__bandgap_energy_ev",
+  "dataset_id": "local:datasets/mle_tabular_candidates_20261103/raw/nomad2018-predict-transparent-conductors/train.csv",
+  "target": "bandgap_energy_ev",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "Two single-target tabular adaptations; no geometry-derived features. RMSE of log1p target per task, not the official two-output aggregate. Fixed stratified classification / random regression 60/20/20 row split. No unseen-group generalization claim without supplied identity. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "spacegroup"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "nomad2018-predict-transparent-conductors",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/prepared36_20261103/nomad2018-predict-transparent-conductors/preparation.json"
+}

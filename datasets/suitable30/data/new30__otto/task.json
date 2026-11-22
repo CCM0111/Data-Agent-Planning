@@ -1,0 +1,20 @@
+{
+  "name": "new30__otto",
+  "dataset_id": "https://www.openml.org/d/45548",
+  "target": "target",
+  "problem_type": "classification",
+  "metric": "accuracy",
+  "seed": 42,
+  "description": "Exact public OpenML dataset version ID 45548; all source predictors retained except identifier columns explicitly listed. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  }
+}

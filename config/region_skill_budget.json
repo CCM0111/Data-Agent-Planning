@@ -1,0 +1,8 @@
+{
+  "selection_wall_seconds_per_seed": 43200,
+  "minimum_evaluation_wall_seconds": 21600,
+  "evaluation_overhead_seconds": 3600,
+  "evaluation_timeout_multiplier": 2.0,
+  "infrastructure_retries": 2,
+  "history_limit": 16
+}

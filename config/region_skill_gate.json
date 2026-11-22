@@ -1,0 +1,8 @@
+{
+  "min_sources": 6,
+  "min_delta": 0.01,
+  "bootstrap_repeats": 5000,
+  "bootstrap_seed": 2026,
+  "min_bootstrap_lower": 0.0,
+  "extra_branch_penalty": 0.01
+}

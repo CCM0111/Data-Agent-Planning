@@ -1,0 +1,66 @@
+# 30 regression datasets / 30 targets; fresh P10% feedback; coverage (0.3,0.6,2) vs random, three paired sampling seeds.
+workflow:
+  parameter_feedback: true
+  proxy_train_ratio: 0.1
+  proxy_train_min_rows: 500
+  proxy_train_max_rows: 10000
+  coreset_ratio: 0.1
+  coreset_max_rows: null
+  core_validation_ratio: 0.05
+  core_validation_min_rows: 300
+  n_strategies: 5
+  n_coresets: 6
+  gmm_components: 5
+  gmm_max_iter: 100
+  gmm_seed: 2026
+  regression_bins: 5
+  error_clip_quantile: 0.95
+  lambda: 1.0
+  split_seed: 2026
+  representation_seed: 2026
+  graph_seed: 2026
+  model_seed: 101
+  batch_size: 2048
+  max_dimensions: 20
+  max_categories: 32
+  graph_block_size: 2000
+  neighbors: 20
+  id_columns: []
+  leakage_columns: []
+  categorical_columns: []
+  scoring_budget:
+    max_trees: 100
+    max_epochs: 5
+    timeout_seconds: 480
+  full_train_enabled: true
+  full_train_budget:
+    max_trees: 500
+    max_epochs: 200
+    timeout_seconds: 3600
+  evaluation_budget:
+    max_trees: 100
+    max_epochs: 50
+    timeout_seconds: 300
+  stage1_selection:
+    enabled: false
+    mode: record_only
+    bootstrap_replicates: 2000
+    bootstrap_seed: 2026
+    alpha: 0.05
+    coreset_weights:
+    - 0.16666666666666666
+    - 0.16666666666666666
+    - 0.16666666666666666
+    - 0.16666666666666666
+    - 0.16666666666666666
+    - 0.16666666666666666
+    mcts_admission: false
+  method_preflight: true
+  proxy_selection_scheme: marginal_coverage_random_comparison
+model:
+  model_name: deepseek-flash
+  base_url: https://api.deepseek.com
+  api_key_env_var: OPENAI_API_KEY
+  max_tokens: 65536
+  temperature: 0.7
+  timeout: 600

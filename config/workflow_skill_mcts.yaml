@@ -1,0 +1,33 @@
+# New experiment entry: scripts/run_mcts_skill_campaign.py.
+# Legacy workflows and historical experiment configurations remain separate.
+region_config: config/region_bandit.yaml
+search_config: config/mcts_skill.yaml
+multi_proxy:
+  parameter_feedback: true
+  parameter_feedback_mode: guarded_once
+region_bandit:
+  regions:
+    max_behavior_regions: 2
+    max_single_pair_regions: 2
+    max_coverage_regions: 2
+  advisor:
+    enabled: true
+    decision_mode: agent
+    experience_skills: false
+  sampling:
+    mode: resample
+    resample_control: false
+  post_full_feedback:
+    enabled: false
+  actions:
+    focus_relative_increase: 0.10
+    focus_max_percentage_points: 0.02
+  mcts_rounds:
+    enabled: true
+model:
+  model_name: deepseek-flash
+  base_url: https://api.deepseek.com
+  api_key_env_var: OPENAI_API_KEY
+  max_tokens: 98304
+  temperature: 0.0
+  timeout: 1200

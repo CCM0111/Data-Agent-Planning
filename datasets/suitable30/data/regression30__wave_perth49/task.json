@@ -1,0 +1,33 @@
+{
+  "name": "regression30__wave_perth49",
+  "dataset_id": "https://www.kaggle.com/datasets/joebeachcapital/large-scale-wave-energy-farm",
+  "target": "Total_Power",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "选 WEC/WEC/WEC_Perth_49.csv 并整行去重; 仿真；同坐标重复需在最终准备时再次核实. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "wave_perth49",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__wave_perth49/preparation.json",
+  "preparation_audit_sha256": "2644ff0456c0cc2b21d8b50a1252e15b65a6007a0125a3ac0b56508cbe0a2f4b"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "new30__tetouan_power",
+  "dataset_id": "https://archive.ics.uci.edu/dataset/849",
+  "target": "Zone 1 Power Consumption",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "Zone 1 consumption conditional on observed weather/calendar; the two other zones are excluded. Ten-minute measurements, chronological outer partitions. Raw source has 52416 rows (metadata includes header). Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "time"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "protocol_files": {
+    "train": "train_protocol.csv",
+    "validation": "validation_protocol.csv",
+    "test": "test_protocol.csv"
+  }
+}

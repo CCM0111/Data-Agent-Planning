@@ -1,0 +1,33 @@
+{
+  "name": "regression30__puma32h",
+  "dataset_id": "https://www.openml.org/d/308",
+  "target": "thetadd6",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "只取一个家族版本; 高噪声可能降低覆盖收益. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "puma32h",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__puma32h/preparation.json",
+  "preparation_audit_sha256": "9ebfd0fcb00e973d302ecacc8b99029880b163ef968e1e481efd79a0e69e4236"
+}

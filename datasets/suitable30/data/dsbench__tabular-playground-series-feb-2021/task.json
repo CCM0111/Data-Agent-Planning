@@ -1,0 +1,18 @@
+{
+  "name": "dsbench_tabular-playground-series-feb-2021",
+  "description": "Only input packaging has been performed. All original feature columns, IDs, constant columns and missing markers are retained. Analyze them in EDA and perform appropriate feature handling in FE fitted on training data only. This is an independent random-split experiment, not reproduction of the original benchmark. Original metric: RMSE; experiment metric: mse. Use the provided frozen split. Do not repartition. Test labels are evaluator-only. No final refit on validation data.",
+  "target": "target",
+  "problem_type": "regression",
+  "metric": "mse",
+  "seed": 42,
+  "split": {
+    "strategy": "frozen",
+    "origin": "provided_test"
+  },
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  }
+}

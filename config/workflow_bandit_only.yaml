@@ -1,0 +1,5 @@
+# Region discovery + API advice + bandit; no MCTS expansion.
+# Automatically uses full_train_methods: all and rewards all five initial methods.
+modules:
+  region_selection: true
+  mcts: false

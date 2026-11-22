@@ -1,0 +1,28 @@
+{
+  "name": "new30__steel_energy",
+  "dataset_id": "https://archive.ics.uci.edu/dataset/851",
+  "target": "Usage_kWh",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "Predict 15-minute energy usage from calendar and strictly past electrical measurements (lag1, usage lag4/96). Exclude same-time CO2, reactive power, power factors, and Load_Type because of target-proxy risk. Causal lags computed on chronological source; outer partitions chronological; missing early lags retained for train-only imputation. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "time"
+  },
+  "categorical_columns": [
+    "WeekStatus",
+    "Day_of_week"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "protocol_files": {
+    "train": "train_protocol.csv",
+    "validation": "validation_protocol.csv",
+    "test": "test_protocol.csv"
+  }
+}

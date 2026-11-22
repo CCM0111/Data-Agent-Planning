@@ -1,0 +1,10 @@
+numpy
+pandas
+scipy
+scikit-learn
+joblib
+openai
+json-repair
+python-dotenv
+PyYAML
+sentence-transformers>=5.1,<6

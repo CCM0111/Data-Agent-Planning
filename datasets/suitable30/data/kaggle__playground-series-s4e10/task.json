@@ -1,0 +1,22 @@
+{
+  "name": "kaggle_playground-series-s4e10",
+  "dataset_id": "kaggle:playground-series-s4e10",
+  "task_family": "financial_risk",
+  "retrieval_description": "Predict loan approval from applicant age, income, home ownership, employment length, loan intent, loan amount, interest rate, income ratio and credit history.",
+  "target": "loan_status",
+  "problem_type": "classification",
+  "metric": "f1_macro",
+  "task_id": "kaggle:playground-series-s4e10",
+  "description": "Predict loan approval from applicant age, income, home ownership, employment length, loan intent, loan amount, interest rate, income ratio and credit history. Synthetic Kaggle Playground S4E10 competition training table: 58645 labeled rows and 12 inputs including id. No unlabeled competition test table is used. Downloaded from XnhuUcas/TLOAP dataset/train.csv at fixed Git commit 9311d0afdf2f99a78173faf023c6055c72bf6717. The project uses new frozen splits and macro F1 rather than the competition AUC protocol. Use training data for fitting; all source feature columns and missing values are retained. This uses a project-specific frozen split and metric, not the paper leaderboard protocol. Use the provided frozen split. Do not repartition. Test labels are evaluator-only. No final refit on validation data.",
+  "seed": 42,
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  }
+}

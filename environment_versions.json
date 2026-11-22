@@ -1,0 +1,12 @@
+{
+  "numpy": "2.3.3",
+  "pandas": "2.3.3",
+  "scipy": "1.15.3",
+  "scikit-learn": "1.7.2",
+  "joblib": "1.5.2",
+  "openai": "2.5.0",
+  "json-repair": "0.51.0",
+  "python-dotenv": "1.1.1",
+  "PyYAML": "6.0.2",
+  "sentence-transformers": "5.1.1"
+}

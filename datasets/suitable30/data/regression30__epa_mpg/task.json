@@ -1,0 +1,46 @@
+{
+  "name": "regression30__epa_mpg",
+  "dataset_id": "https://www.kaggle.com/datasets/epa/fuel-economy",
+  "target": "Combined MPG (FT1)",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "输入仅白名单车辆规格; 同车型年份依赖；仅车队规格插值. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "Class",
+    "Drive",
+    "Engine Descriptor",
+    "Fuel Type",
+    "Fuel Type 1",
+    "Fuel Type 2",
+    "Make",
+    "Model",
+    "Supercharger",
+    "Transmission",
+    "Transmission Descriptor",
+    "Turbocharger"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "epa_mpg",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__epa_mpg/preparation.json",
+  "preparation_audit_sha256": "1d86f0ad0352ff394ebcf55b11301acdf08fcd414e826dfe82462580e5661348"
+}

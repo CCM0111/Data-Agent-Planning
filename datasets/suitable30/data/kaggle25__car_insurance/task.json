@@ -1,0 +1,69 @@
+{
+  "name": "kaggle25__car_insurance",
+  "dataset_id": "https://www.kaggle.com/datasets/ifteshanajnin/carinsuranceclaimprediction-classification",
+  "target": "is_claim",
+  "problem_type": "classification",
+  "metric": "roc_auc",
+  "seed": 42,
+  "description": "仅用有标签train；删除policy_id；解析扭矩、功率字符串；不要把sample_submission当真标签。 Parse torque/power into value, explicit unit, rpm; no target-derived features. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "area_cluster",
+    "cylinder",
+    "engine_type",
+    "fuel_type",
+    "gear_box",
+    "is_adjustable_steering",
+    "is_brake_assist",
+    "is_central_locking",
+    "is_day_night_rear_view_mirror",
+    "is_driver_seat_height_adjustable",
+    "is_ecw",
+    "is_esc",
+    "is_front_fog_lights",
+    "is_parking_camera",
+    "is_parking_sensors",
+    "is_power_door_locks",
+    "is_power_steering",
+    "is_rear_window_defogger",
+    "is_rear_window_washer",
+    "is_rear_window_wiper",
+    "is_speed_alert",
+    "is_tpms",
+    "make",
+    "max_power_unit",
+    "max_torque_unit",
+    "model",
+    "rear_brakes_type",
+    "segment",
+    "steering_type",
+    "transmission_type"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "car_insurance",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__car_insurance/preparation.json",
+  "preparation_audit_sha256": "5762250d88a7a0ae3441c9b92b939550f7ed8911d30bd9f0e8175eb4bd8b292c",
+  "source_family_overlap": "",
+  "target_label_mapping": {
+    "0": 0,
+    "1": 1
+  }
+}

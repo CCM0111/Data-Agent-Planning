@@ -1,0 +1,42 @@
+# Unified skill/MCTS search budget. The campaign pauses at full-success
+# boundaries 3, 6, 9, 11 without changing this frozen configuration.
+initialization_config: config/coverage_expanded.yaml
+search:
+  enabled: true
+  mcs_enabled: true
+  rollout_schedule: evidence_reserved
+  staged_search: true
+  root_trials: true
+  # Seven primary expansions and one independent audit after the three root trials.
+  # If an extra slot is unused, a primary expansion can use it later.
+  base_expansions: 7
+  max_expansions: 8
+  max_search_attempts: 24
+  max_rollout_attempts: 11 # compatibility only; failed fits do not consume successes
+  max_rollout_successes: 11
+  exploration_rounds: [3, 6]
+  calibration_rounds: [4]
+  independent_audit_round: 4
+  initial_candidates: 5
+  initial_keep: 3
+  expansion_candidates: 2
+  shortlist_cap: 1
+  max_low_fit_attempts: 240
+  max_api_calls: 120
+  max_wall_seconds: 259200 # active execution only; stage idle time is excluded
+  repair_attempts: 2
+  infrastructure_retries: 2
+  max_children_per_node: 3
+  max_depth: 12
+  exploration_constant: 1.4142135623730951
+  minimum_full_improvement: 0.0
+  backup_win_threshold: 0.25
+  second_rollout_every: 4
+  bootstrap_replicates: 1000
+  bootstrap_seed: 2026
+  mcs_alpha: 0.05
+memory:
+  enabled: true
+  default_count: 4
+  max_count: 6
+  token_budget: 18000

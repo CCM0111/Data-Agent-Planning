@@ -1,0 +1,33 @@
+{
+  "name": "regression30__pol",
+  "dataset_id": "https://www.openml.org/d/201",
+  "target": "foo",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "使用原始回归版本; 匿名通信数据，业务机制信息有限. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "pol",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__pol/preparation.json",
+  "preparation_audit_sha256": "08daf1f564a1f295dffc6b0c32abcc095b1ffe84d9f3a150f36b832fb8f61758"
+}

@@ -1,0 +1,42 @@
+{
+  "name": "kaggle25__medical_malpractice",
+  "dataset_id": "https://www.kaggle.com/datasets/gabrielsantello/medical-malpractice-insurance-dataset",
+  "target": "Amount",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "定义为伤害严重度/代理情况已知后的赔款金额预测；不解释为事前医疗风险；缺少实体ID，重复患者/医生风险未能核验。 Claim valuation after severity and representation are known; no pre-injury risk prediction claim. Entity identifiers unavailable. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "Gender",
+    "Insurance",
+    "Marital Status",
+    "Private Attorney",
+    "Severity",
+    "Specialty"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "medical_malpractice",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__medical_malpractice/preparation.json",
+  "preparation_audit_sha256": "e0d509859cd88cd1107fe0160353236a58ecf777baec197941ed9f7335a6d4b8",
+  "source_family_overlap": "",
+  "target_label_mapping": {}
+}

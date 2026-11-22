@@ -1,0 +1,39 @@
+{
+  "name": "kaggle25__ford_used_cars",
+  "dataset_id": "https://www.kaggle.com/datasets/adityadesai13/used-car-dataset-ford-and-mercedes",
+  "target": "price",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "固定只用ford.csv；不与focus等重叠子文件合并；不要把各品牌文件包装为独立来源。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "fuelType",
+    "model",
+    "transmission"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "ford_used_cars",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__ford_used_cars/preparation.json",
+  "preparation_audit_sha256": "e800617e903f3adc25e63aff4f46d9adae64da4ccc09cde187ae234f93c5257e",
+  "source_family_overlap": "",
+  "target_label_mapping": {}
+}

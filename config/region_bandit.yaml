@@ -1,0 +1,87 @@
+# New runs use expanded training allowances; existing runs retain frozen manifests.
+initialization_config: config/coverage_expanded.yaml
+multi_proxy:
+  parameter_feedback: true
+  method_preflight: true
+  stage1_selection:
+    enabled: true
+    mode: record_only
+    bootstrap_replicates: 2000
+    bootstrap_seed: 2026
+    alpha: 0.05
+    coreset_weights: [1.0]
+    mcts_admission: false
+region_bandit:
+  enabled: true
+  mode: develop_online
+  coreset_repeats: 1
+  # Normal execution trains only the coreset top 3. Use all for five-method experiments.
+  # Baseline audits and multiple coreset repeats use all five for a shared reference.
+  full_train_methods: top3
+  # baseline_audit defaults to false for development and true for frozen evaluation.
+  # Set it explicitly only if intentionally overriding the mode's default.
+  decision_seed: 2026
+  sampling_seeds: [20261026]
+  # Used only by the combined MCTS workflow, not the standalone initial experiment.
+  mcts_rounds:
+    enabled: true
+    single_pair_weight: 0.5
+  regions:
+    # Default to 100000 for rare-region diagnostics, bounded by the actual Q size.
+    # Changing this setting requires a fresh run (the discovery config is frozen).
+    diagnostic_max_rows: 100000
+    discover_fraction: 0.5
+    max_features: 8
+    numeric_quantiles: [0.2, 0.4, 0.6, 0.8]
+    max_basic_rules: 90
+    max_conjunction_rules: 30
+    max_rule_conditions: 2
+    min_rows_per_half: 30
+    min_expected_coreset_rows: 5
+    max_region_fraction: 0.9
+    max_behavior_regions: 4
+    max_coverage_regions: 2
+    jaccard_dedup_threshold: 0.8
+  actions:
+    types: [baseline, cover, focus]
+    focus_relative_increase: 0.25
+    focus_max_percentage_points: 0.05
+    require_positive_actual_increase: true
+  quotas:
+    class_relative_slack: 0.10
+    subgroup_relative_slack: 0.30
+    total_move_fraction: 0.10
+    solver_time_limit_per_action_seconds: 10.0
+  advisor:
+    enabled: true
+    max_attempts: 1
+    allowed_scores: [-1, -0.5, 0, 0.5, 1]
+    baseline_score: 0
+    max_history_datasets: 5
+    max_retrieval_distance: 0.35
+  policy:
+    ridge_theta: 1.0
+    ridge_api: 1.0
+    api_coefficient_prior: 0.1
+    api_coefficient_bounds: [0.0, 0.2]
+    cold_start_distinct_tasks: 12
+    cold_start_epsilon: 0.5
+    epsilon: 0.2
+  reward:
+    atol: 1.0e-12
+    rtol: 1.0e-8
+    # Exclude full-score pairs within this predeclared metric-specific gap.
+    # No comparable pairs means no reward label or policy update.
+    practical_tolerance: 0.0
+  post_full_feedback:
+    enabled: true
+    predict_core_on_external_validation: true
+    min_region_rows: 30
+    bootstrap_repeats: 300
+  memory:
+    dataset_total_weight: 1.0
+    exclude_current_dataset_from_retrieval: true
+    require_compatible_versions: true
+  runtime:
+    max_wall_seconds: 86400
+    infrastructure_retries: 2

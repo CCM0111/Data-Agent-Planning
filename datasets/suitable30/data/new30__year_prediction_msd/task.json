@@ -1,0 +1,20 @@
+{
+  "name": "new30__year_prediction_msd",
+  "dataset_id": "https://archive.ics.uci.edu/dataset/203",
+  "target": "year",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "Official first 463715 training / final 51630 test split retained to avoid producer effect. Helper reserves 20% of official training for validation. Ninety acoustic features, raw release-year RMSE. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "official"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  }
+}

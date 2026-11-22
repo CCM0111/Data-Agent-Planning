@@ -1,0 +1,37 @@
+# Fixed historical five-method banks; use scripts/run_region_skill_memory.py.
+# Skill versions, reward and acceptance criteria are frozen by the experiment manifest.
+initialization_config: config/coverage_regression30.yaml
+multi_proxy:
+  parameter_feedback: true
+  method_preflight: true
+region_bandit:
+  enabled: true
+  mode: develop_online
+  full_train_methods: all
+  baseline_audit: false
+  coreset_repeats: 1
+  sampling_seeds: [20261026]
+  advisor:
+    enabled: true
+    decision_mode: agent
+    experience_skills: false # persistent procedural versions are supplied by the new runner
+  sampling:
+    mode: resample
+    resample_control: false
+  mcts_rounds:
+    enabled: false
+  post_full_feedback:
+    enabled: false
+  quotas:
+    solver_time_limit_per_action_seconds: 10.0
+  runtime:
+    max_wall_seconds: 43200 # scaled upward with seed count by the skill runner
+    infrastructure_retries: 2
+# Same model/output allowance, longer time for structured dual-action decisions.
+model:
+  model_name: deepseek-flash
+  base_url: https://api.deepseek.com
+  api_key_env_var: OPENAI_API_KEY
+  max_tokens: 98304
+  temperature: 0.0
+  timeout: 1200

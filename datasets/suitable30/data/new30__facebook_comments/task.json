@@ -1,0 +1,25 @@
+{
+  "name": "new30__facebook_comments",
+  "dataset_id": "https://archive.ics.uci.edu/dataset/363",
+  "target": "comments",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "Only Features_Variant_1.csv (40949 rows); no merging of overlapping variants. Predict future comments using page descriptors and observed post history. Exclude 25 page-level comment aggregate columns because computation cutoff cannot be independently verified. Outer group split uses the first four page-descriptor values as a conservative surrogate identity, not a verified page ID. Original comments scale, RMSE; no target-dependent log transform. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "group"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "protocol_files": {
+    "train": "train_protocol.csv",
+    "validation": "validation_protocol.csv",
+    "test": "test_protocol.csv"
+  }
+}

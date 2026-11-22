@@ -1,0 +1,35 @@
+{
+  "name": "kaggle25__superconductivity",
+  "dataset_id": "https://www.kaggle.com/datasets/tunguz/superconductivty-data-data-set",
+  "target": "critical_temp",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "用unique_m.material识别配方，每配方保留原顺序首条后划分；unique_m中的标签不进入特征；最终只用train的81个特征。 Keep original first row per material formula; formula file used only for identity, never as extra target/features. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "superconductivity",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__superconductivity/preparation.json",
+  "preparation_audit_sha256": "e90ccd1472fa9311d9962e7bb9355bf7e3ac9dcc0e15ee32308375e6d1e7e03a",
+  "source_family_overlap": "",
+  "target_label_mapping": {}
+}

@@ -1,0 +1,38 @@
+{
+  "name": "kaggle25__qsar_oral_toxicity",
+  "dataset_id": "https://www.kaggle.com/datasets/akhilkira/qsar-oral-toxicity",
+  "target": "toxicity",
+  "problem_type": "classification",
+  "metric": "roc_auc",
+  "seed": 42,
+  "description": "无表头；最后一列为标签；1024维二进制指纹；评估近重复化合物风险。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "qsar_oral_toxicity",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__qsar_oral_toxicity/preparation.json",
+  "preparation_audit_sha256": "a787933b44c0b1c755a50b68ae723c771f4100fb709ca0fd444bb5f1f07de62d",
+  "source_family_overlap": "",
+  "target_label_mapping": {
+    "negative": 0,
+    "positive": 1
+  }
+}

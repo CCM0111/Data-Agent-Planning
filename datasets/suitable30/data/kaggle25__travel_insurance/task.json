@@ -1,0 +1,45 @@
+{
+  "name": "kaggle25__travel_insurance",
+  "dataset_id": "https://www.kaggle.com/datasets/mhdzahier/travel-insurance",
+  "target": "Claim",
+  "problem_type": "classification",
+  "metric": "roc_auc",
+  "seed": 42,
+  "description": "强不平衡；Gender缺失多；处理异常Duration；核实净销售额等字段在投保时是否可用。 Exclude sales/commission fields because refund/final accounting timing is unresolved; impossible age and negative duration set missing. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "Agency",
+    "Agency Type",
+    "Destination",
+    "Distribution Channel",
+    "Gender",
+    "Product Name"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "travel_insurance",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__travel_insurance/preparation.json",
+  "preparation_audit_sha256": "022f21e4865fd7cc79192151125bb52b910c97f378f0ae9389ee352f70019b44",
+  "source_family_overlap": "",
+  "target_label_mapping": {
+    "No": 0,
+    "Yes": 1
+  }
+}

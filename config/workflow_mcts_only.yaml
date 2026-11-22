@@ -1,0 +1,5 @@
+# Original coverage sampling + MCTS; no region advisor or bandit memory access.
+# Automatically uses full_train_methods: top3 for the initial bank.
+modules:
+  region_selection: false
+  mcts: true

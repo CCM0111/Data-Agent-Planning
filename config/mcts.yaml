@@ -1,0 +1,48 @@
+# Standalone search uses a fixed coreset. The combined regional workflow can
+# freeze a new shared coreset per expansion; full train/validation remain fixed.
+# --task uses this existing P10% feedback workflow before attaching MCTS.
+initialization_config: config/coverage_expanded.yaml
+search:
+  enabled: true # false: all five initial methods receive full fits, then stop
+  mcs_enabled: true
+  # Twelve primary rounds; eight exploit rounds and four exploration rounds.
+  rollout_schedule: evidence_reserved
+  exploration_rounds: [3, 6, 9, 12]
+  # Round 2: independent audit; subsequent even rounds release competitive slots.
+  calibration_rounds: [2, 4, 6, 8, 10, 12]
+  independent_audit_round: 2
+  initial_candidates: 5
+  initial_keep: 3 # applies when enabled; disabled mode evaluates all initial_candidates
+  expansion_candidates: 2
+  shortlist_cap: 1
+  max_expansions: 12
+  max_search_attempts: 24
+  # Deprecated, ignored: retained only for compatibility with frozen configs.
+  max_rollout_attempts: 27
+  # Only successful full evaluations consume rollout quota; failed fits do not.
+  # API, low-fit, search-attempt and wall-time limits remain independent.
+  max_rollout_successes: 27 # 3 initial + at most 2 per expansion; scheduling may use fewer
+  max_low_fit_attempts: 240
+  max_api_calls: 120
+  max_wall_seconds: 259200 # 72h for the search, including full fits, low fits and generation
+  repair_attempts: 2
+  infrastructure_retries: 2
+  max_children_per_node: 3
+  max_depth: 12
+  exploration_constant: 1.4142135623730951
+  minimum_full_improvement: 0.0
+  backup_win_threshold: 0.25
+  second_rollout_every: 4
+  bootstrap_replicates: 1000
+  bootstrap_seed: 2026
+  mcs_alpha: 0.05
+memory:
+  enabled: true
+  default_count: 4
+  max_count: 6
+  # Shared candidate feedback only; task/EDA, parent code and search state are separate.
+  token_budget: 18000
+# Optional fixed feature-only groups, defined before search; at most six.
+# Missingness groups are always included; groups with fewer than five rows are unscored.
+# subgroups:
+#   - {name: older_customers, column: age, op: ge, value: 60}

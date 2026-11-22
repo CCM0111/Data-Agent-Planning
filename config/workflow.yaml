@@ -1,0 +1,23 @@
+# Unified entry: run_data_agent_workflow.py. These switches override inherited flags.
+region_config: config/region_bandit.yaml
+search_config: config/mcts.yaml
+modules:
+  region_selection: true    # false: original coverage sampler; no bandit memory access
+  region_advisor: true      # false: no region-scoring API call; bandit still works
+  parameter_feedback: true # false: keep initially generated stage parameters
+  mcts: true                # true: initial top3 full; false: all five full, no expansion
+  mcs: true                 # false: rank by coreset primary metric without MCS
+  search_memory: true       # false: no retrieved experiment/repair cards in prompts
+  post_full_feedback: true  # false: no region prediction diagnostics; ranking reward remains
+multi_proxy:
+  parameter_feedback_mode: guarded_once # one mild P/Q-triggered adjustment before sampling
+# full_train_methods follows mcts automatically: true -> top3, false -> all.
+# Initial bandit rewards use those 3 or 5 results. With MCTS and regional sampling,
+# each expansion also chooses one shared coreset and records a separate anchored reward.
+region_bandit:
+  mcts_rounds:
+    enabled: true           # false: keep the initialization coreset throughout MCTS
+    single_pair_weight: 0.5 # heuristic evidence weight, not a confidence probability
+# Original initial-fit/full budgets, splits, sampling coefficients and model settings
+# are inherited. Optional overrides: multi_proxy, region_bandit, search, memory.
+# Test evaluation remains a separate explicit command after search selection is frozen.

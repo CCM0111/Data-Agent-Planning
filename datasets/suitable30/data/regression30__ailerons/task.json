@@ -1,0 +1,33 @@
+{
+  "name": "regression30__ailerons",
+  "dataset_id": "https://www.openml.org/d/296",
+  "target": "goal",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "经典表格控制回归; 轨迹依赖未验证；不代表未来飞行泛化. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "ailerons",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__ailerons/preparation.json",
+  "preparation_audit_sha256": "e834ce2efc0928509671c2999ecedd343aba2031b5eeef4cfeaa435adbdd43a2"
+}

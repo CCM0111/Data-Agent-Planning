@@ -1,0 +1,11 @@
+{
+  "version": "adaptive-coreset-v2",
+  "mode": "adaptive",
+  "coverage_loss_fraction": 0.1,
+  "boundary_gap_fraction": 0.05,
+  "trigger_skill_conflict": false,
+  "trigger_coverage_loss": true,
+  "trigger_boundary_gap": true,
+  "trigger_unvalidated_intervention": true,
+  "trigger_skill_abstention": false
+}

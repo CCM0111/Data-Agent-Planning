@@ -1,0 +1,728 @@
+[
+  {
+    "task": "new30__facebook_comments",
+    "cohort": "new30",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "new30__facebook_comments",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/new30__facebook_comments/task.json"
+  },
+  {
+    "task": "kaggle25__superconductivity",
+    "status": "ready",
+    "rows": {
+      "train": 9297,
+      "validation": 3099,
+      "test": 3099
+    },
+    "split_kind": "random",
+    "dataset": "superconductivity",
+    "display_name": "超导临界温度",
+    "target": "critical_temp",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 15495,
+    "features": 81,
+    "notes": "用unique_m.material识别配方，每配方保留原顺序首条后划分；unique_m中的标签不进入特征；最终只用train的81个特征。 Keep original first row per material formula; formula file used only for identity, never as extra target/features. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/tunguz/superconductivty-data-data-set",
+    "candidate_id": 26,
+    "existing_family_overlap": "",
+    "collection_dataset": "superconductivity",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__superconductivity/task.json"
+  },
+  {
+    "task": "kaggle25__car_insurance",
+    "status": "ready",
+    "rows": {
+      "train": 35154,
+      "validation": 11719,
+      "test": 11719
+    },
+    "split_kind": "random",
+    "dataset": "car_insurance",
+    "display_name": "汽车保险索赔",
+    "target": "is_claim",
+    "problem_type": "classification",
+    "metric": "roc_auc",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 58592,
+    "features": 46,
+    "notes": "仅用有标签train；删除policy_id；解析扭矩、功率字符串；不要把sample_submission当真标签。 Parse torque/power into value, explicit unit, rpm; no target-derived features. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/ifteshanajnin/carinsuranceclaimprediction-classification",
+    "candidate_id": 14,
+    "existing_family_overlap": "",
+    "collection_dataset": "car_insurance",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__car_insurance/task.json"
+  },
+  {
+    "task": "regression30__epa_mpg",
+    "status": "ready",
+    "rows": {
+      "train": 22867,
+      "validation": 7623,
+      "test": 7623
+    },
+    "split_kind": "random",
+    "dataset": "epa_mpg",
+    "display_name": "EPA fuel economy",
+    "target": "Combined MPG (FT1)",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 38113,
+    "features": 15,
+    "notes": "输入仅白名单车辆规格; 同车型年份依赖；仅车队规格插值. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/epa/fuel-economy",
+    "candidate_id": 28,
+    "existing_family_overlap": "",
+    "collection_dataset": "epa_mpg",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__epa_mpg/task.json"
+  },
+  {
+    "task": "regression30__spotify",
+    "status": "ready",
+    "rows": {
+      "train": 53844,
+      "validation": 17948,
+      "test": 17949
+    },
+    "split_kind": "random",
+    "dataset": "spotify",
+    "display_name": "Spotify track popularity",
+    "target": "popularity",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 89741,
+    "features": 15,
+    "notes": "按track_id去重，只用音频/曲风属性; 有界整数回归；同艺人依赖；只做当前热度解释. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset",
+    "candidate_id": 27,
+    "existing_family_overlap": "",
+    "collection_dataset": "spotify",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__spotify/task.json"
+  },
+  {
+    "task": "new30__otto",
+    "cohort": "new30",
+    "problem_type": "classification",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "new30__otto",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/new30__otto/task.json"
+  },
+  {
+    "task": "new30__protein_casp",
+    "cohort": "new30",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "new30__protein_casp",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/new30__protein_casp/task.json"
+  },
+  {
+    "task": "new30__steel_energy",
+    "cohort": "new30",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "new30__steel_energy",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/new30__steel_energy/task.json"
+  },
+  {
+    "task": "regression30__naval",
+    "status": "ready",
+    "rows": {
+      "train": 7160,
+      "validation": 2387,
+      "test": 2387
+    },
+    "split_kind": "random",
+    "dataset": "naval",
+    "display_name": "Naval propulsion",
+    "target": "compressor_decay",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 11934,
+    "features": 16,
+    "notes": "空白分隔无表头；只建一个输出任务; 模拟数据；此前广泛候选中已有记录，未作为已测任务. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/elikplim/maintenance-of-naval-propulsion-plants-data-set",
+    "candidate_id": 11,
+    "existing_family_overlap": "",
+    "collection_dataset": "naval",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__naval/task.json"
+  },
+  {
+    "task": "dsbench__tabular-playground-series-feb-2021",
+    "cohort": "previous40",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "dsbench__tabular-playground-series-feb-2021",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/dsbench__tabular-playground-series-feb-2021/task.json"
+  },
+  {
+    "task": "regression30__puma32h",
+    "status": "ready",
+    "rows": {
+      "train": 4914,
+      "validation": 1639,
+      "test": 1639
+    },
+    "split_kind": "random",
+    "dataset": "puma32h",
+    "display_name": "Puma32H",
+    "target": "thetadd6",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 8192,
+    "features": 32,
+    "notes": "只取一个家族版本; 高噪声可能降低覆盖收益. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.openml.org/d/308",
+    "candidate_id": 2,
+    "existing_family_overlap": "",
+    "collection_dataset": "puma32h",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__puma32h/task.json"
+  },
+  {
+    "task": "datascibench__human_12",
+    "cohort": "previous40",
+    "problem_type": "classification",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "datascibench__human_12",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/datascibench__human_12/task.json"
+  },
+  {
+    "task": "prepared36__nomad2018-predict-transparent-conductors__bandgap_energy_ev",
+    "status": "ready",
+    "rows": {
+      "train": 1440,
+      "validation": 480,
+      "test": 480
+    },
+    "split_kind": "random",
+    "dataset": "nomad2018-predict-transparent-conductors",
+    "target": "bandgap_energy_ev",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "notes": "Two single-target tabular adaptations; no geometry-derived features. RMSE of log1p target per task, not the official two-output aggregate. Fixed stratified classification / random regression 60/20/20 row split. No unseen-group generalization claim without supplied identity.",
+    "cohort": "prepared16",
+    "collection_group": "added_prepared16_favorable5",
+    "collection_dataset": "nomad2018-predict-transparent-conductors",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/prepared36__nomad2018-predict-transparent-conductors__bandgap_energy_ev/task.json"
+  },
+  {
+    "task": "prepared36__nomad2018-predict-transparent-conductors__formation_energy_ev_natom",
+    "status": "ready",
+    "rows": {
+      "train": 1440,
+      "validation": 480,
+      "test": 480
+    },
+    "split_kind": "random",
+    "dataset": "nomad2018-predict-transparent-conductors",
+    "target": "formation_energy_ev_natom",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "notes": "Two single-target tabular adaptations; no geometry-derived features. RMSE of log1p target per task, not the official two-output aggregate. Fixed stratified classification / random regression 60/20/20 row split. No unseen-group generalization claim without supplied identity.",
+    "cohort": "prepared16",
+    "collection_group": "added_prepared16_favorable5",
+    "collection_dataset": "nomad2018-predict-transparent-conductors",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/prepared36__nomad2018-predict-transparent-conductors__formation_energy_ev_natom/task.json"
+  },
+  {
+    "task": "kaggle25__ford_used_cars",
+    "status": "ready",
+    "rows": {
+      "train": 10686,
+      "validation": 3562,
+      "test": 3563
+    },
+    "split_kind": "random",
+    "dataset": "ford_used_cars",
+    "display_name": "英国 Ford 二手车",
+    "target": "price",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 17811,
+    "features": 8,
+    "notes": "固定只用ford.csv；不与focus等重叠子文件合并；不要把各品牌文件包装为独立来源。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/adityadesai13/used-car-dataset-ford-and-mercedes",
+    "candidate_id": 24,
+    "existing_family_overlap": "",
+    "collection_dataset": "ford_used_cars",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__ford_used_cars/task.json"
+  },
+  {
+    "task": "dsbench__playground-series-s4e2",
+    "cohort": "previous40",
+    "problem_type": "classification",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "dsbench__playground-series-s4e2",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/dsbench__playground-series-s4e2/task.json"
+  },
+  {
+    "task": "kaggle25__medical_malpractice",
+    "status": "ready",
+    "rows": {
+      "train": 47525,
+      "validation": 15842,
+      "test": 15842
+    },
+    "split_kind": "random",
+    "dataset": "medical_malpractice",
+    "display_name": "医疗责任赔款金额",
+    "target": "Amount",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 79209,
+    "features": 7,
+    "notes": "定义为伤害严重度/代理情况已知后的赔款金额预测；不解释为事前医疗风险；缺少实体ID，重复患者/医生风险未能核验。 Claim valuation after severity and representation are known; no pre-injury risk prediction claim. Entity identifiers unavailable. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/gabrielsantello/medical-malpractice-insurance-dataset",
+    "candidate_id": 29,
+    "existing_family_overlap": "",
+    "collection_dataset": "medical_malpractice",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__medical_malpractice/task.json"
+  },
+  {
+    "task": "new30__tetouan_power",
+    "cohort": "new30",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "new30__tetouan_power",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/new30__tetouan_power/task.json"
+  },
+  {
+    "task": "new30__year_prediction_msd",
+    "cohort": "new30",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "new30__year_prediction_msd",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/new30__year_prediction_msd/task.json"
+  },
+  {
+    "task": "regression30__flight_fare",
+    "status": "ready",
+    "rows": {
+      "train": 6277,
+      "validation": 2093,
+      "test": 2093
+    },
+    "split_kind": "random",
+    "dataset": "flight_fare",
+    "display_name": "Flight fare",
+    "target": "Price",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 10463,
+    "features": 11,
+    "notes": "Data_Train.xlsx 去重；解析时长/经停/时间; 同期报价插值，不验证未来票价. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/nikhilmittal/flight-fare-prediction-mh",
+    "candidate_id": 13,
+    "existing_family_overlap": "",
+    "collection_dataset": "flight_fare",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__flight_fare/task.json"
+  },
+  {
+    "task": "regression30__ailerons",
+    "status": "ready",
+    "rows": {
+      "train": 8250,
+      "validation": 2750,
+      "test": 2750
+    },
+    "split_kind": "random",
+    "dataset": "ailerons",
+    "display_name": "Ailerons",
+    "target": "goal",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 13750,
+    "features": 40,
+    "notes": "经典表格控制回归; 轨迹依赖未验证；不代表未来飞行泛化. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.openml.org/d/296",
+    "candidate_id": 5,
+    "existing_family_overlap": "轨迹依赖未验证；不代表未来飞行泛化",
+    "collection_dataset": "ailerons",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__ailerons/task.json"
+  },
+  {
+    "task": "dsbench__tabular-playground-series-may-2022",
+    "cohort": "previous40",
+    "problem_type": "classification",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "dsbench__tabular-playground-series-may-2022",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/dsbench__tabular-playground-series-may-2022/task.json"
+  },
+  {
+    "task": "kaggle__playground-series-s4e10",
+    "cohort": "previous40",
+    "problem_type": "classification",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "kaggle__playground-series-s4e10",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle__playground-series-s4e10/task.json"
+  },
+  {
+    "task": "kaggle25__magic_gamma",
+    "status": "ready",
+    "rows": {
+      "train": 11412,
+      "validation": 3804,
+      "test": 3804
+    },
+    "split_kind": "random",
+    "dataset": "magic_gamma",
+    "display_name": "MAGIC 伽马射线",
+    "target": "class",
+    "problem_type": "classification",
+    "metric": "roc_auc",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 19020,
+    "features": 10,
+    "notes": "删除 Unnamed: 0；物理模拟样本，不计作真实观测数据。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/abhinand05/magic-gamma-telescope-dataset",
+    "candidate_id": 2,
+    "existing_family_overlap": "",
+    "collection_dataset": "magic_gamma",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__magic_gamma/task.json"
+  },
+  {
+    "task": "prepared36__openml_raw__texture",
+    "status": "ready",
+    "rows": {
+      "train": 3300,
+      "validation": 1100,
+      "test": 1100
+    },
+    "split_kind": "random",
+    "dataset": "openml_raw__texture",
+    "target": "Class",
+    "problem_type": "classification",
+    "metric": "accuracy",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "notes": "Fixed stratified classification / random regression 60/20/20 row split. No unseen-group generalization claim without supplied identity.",
+    "cohort": "prepared16",
+    "collection_group": "added_prepared16_favorable5",
+    "collection_dataset": "openml_raw__texture",
+    "collection_memberships": [
+      "previous28",
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/prepared36__openml_raw__texture/task.json"
+  },
+  {
+    "task": "kaggle25__dry_bean",
+    "status": "ready",
+    "rows": {
+      "train": 8125,
+      "validation": 2709,
+      "test": 2709
+    },
+    "split_kind": "random",
+    "dataset": "dry_bean",
+    "display_name": "Dry Bean 干豆品种",
+    "target": "Class",
+    "problem_type": "classification",
+    "metric": "accuracy",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 13543,
+    "features": 16,
+    "notes": "16个已提取的形状特征；无需加载图像；检查完全重复行。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/muratkokludataset/dry-bean-dataset",
+    "candidate_id": 1,
+    "existing_family_overlap": "",
+    "collection_dataset": "dry_bean",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__dry_bean/task.json"
+  },
+  {
+    "task": "kaggle25__travel_insurance",
+    "status": "ready",
+    "rows": {
+      "train": 33170,
+      "validation": 11057,
+      "test": 11057
+    },
+    "split_kind": "random",
+    "dataset": "travel_insurance",
+    "display_name": "旅行保险索赔",
+    "target": "Claim",
+    "problem_type": "classification",
+    "metric": "roc_auc",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 55284,
+    "features": 8,
+    "notes": "强不平衡；Gender缺失多；处理异常Duration；核实净销售额等字段在投保时是否可用。 Exclude sales/commission fields because refund/final accounting timing is unresolved; impossible age and negative duration set missing. Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/mhdzahier/travel-insurance",
+    "candidate_id": 13,
+    "existing_family_overlap": "",
+    "collection_dataset": "travel_insurance",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__travel_insurance/task.json"
+  },
+  {
+    "task": "kaggle25__qsar_oral_toxicity",
+    "status": "ready",
+    "rows": {
+      "train": 5109,
+      "validation": 1703,
+      "test": 1703
+    },
+    "split_kind": "random",
+    "dataset": "qsar_oral_toxicity",
+    "display_name": "QSAR 口服毒性",
+    "target": "toxicity",
+    "problem_type": "classification",
+    "metric": "roc_auc",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "kaggle25",
+    "total_rows": 8515,
+    "features": 1024,
+    "notes": "无表头；最后一列为标签；1024维二进制指纹；评估近重复化合物风险。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/akhilkira/qsar-oral-toxicity",
+    "candidate_id": 3,
+    "existing_family_overlap": "",
+    "collection_dataset": "qsar_oral_toxicity",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/kaggle25__qsar_oral_toxicity/task.json"
+  },
+  {
+    "task": "regression30__wave_perth49",
+    "status": "ready",
+    "rows": {
+      "train": 6130,
+      "validation": 2044,
+      "test": 2044
+    },
+    "split_kind": "random",
+    "dataset": "wave_perth49",
+    "display_name": "Wave energy Perth49",
+    "target": "Total_Power",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 10218,
+    "features": 98,
+    "notes": "选 WEC/WEC/WEC_Perth_49.csv 并整行去重; 仿真；同坐标重复需在最终准备时再次核实. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.kaggle.com/datasets/joebeachcapital/large-scale-wave-energy-farm",
+    "candidate_id": 10,
+    "existing_family_overlap": "",
+    "collection_dataset": "wave_perth49",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__wave_perth49/task.json"
+  },
+  {
+    "task": "dsbench__playground-series-s3e6",
+    "cohort": "previous40",
+    "problem_type": "regression",
+    "collection_group": "original_conservative23",
+    "collection_dataset": "dsbench__playground-series-s3e6",
+    "collection_memberships": [
+      "previous28"
+    ],
+    "task_path": "datasets/suitable30/data/dsbench__playground-series-s3e6/task.json"
+  },
+  {
+    "task": "regression30__pol",
+    "status": "ready",
+    "rows": {
+      "train": 8974,
+      "validation": 2992,
+      "test": 2992
+    },
+    "split_kind": "random",
+    "dataset": "pol",
+    "display_name": "POL telecom",
+    "target": "foo",
+    "problem_type": "regression",
+    "metric": "rmse",
+    "role": "benchmark_adaptation",
+    "config_overrides": {
+      "proxy_train_min_rows": 2,
+      "core_validation_min_rows": 2
+    },
+    "cohort": "regression30",
+    "total_rows": 14958,
+    "features": 48,
+    "notes": "使用原始回归版本; 匿名通信数据，业务机制信息有限. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split.",
+    "source_url": "https://www.openml.org/d/201",
+    "candidate_id": 4,
+    "existing_family_overlap": "",
+    "collection_dataset": "pol",
+    "collection_memberships": [
+      "recent33"
+    ],
+    "task_path": "datasets/suitable30/data/regression30__pol/task.json"
+  }
+]

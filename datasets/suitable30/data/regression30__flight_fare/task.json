@@ -1,0 +1,39 @@
+{
+  "name": "regression30__flight_fare",
+  "dataset_id": "https://www.kaggle.com/datasets/nikhilmittal/flight-fare-prediction-mh",
+  "target": "Price",
+  "problem_type": "regression",
+  "metric": "rmse",
+  "seed": 42,
+  "description": "Data_Train.xlsx 去重；解析时长/经停/时间; 同期报价插值，不验证未来票价. Same-snapshot tabular interpolation unless official split; not forecasting or unseen-entity evaluation. Original-record deduplication; no target-based trimming except domain-invalid/nonfinite labels. No learned preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [
+    "Additional_Info",
+    "Airline",
+    "Destination",
+    "Source",
+    "Total_Stops"
+  ],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "flight_fare",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/regression30_20261103/regression30__flight_fare/preparation.json",
+  "preparation_audit_sha256": "7caf39c98b3cd0514c5c8a6b1ff67c99d97d317b263aeed35ad8b428d31a58a0"
+}

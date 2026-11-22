@@ -1,0 +1,18 @@
+{
+  "name": "dsbench_tabular-playground-series-may-2022",
+  "description": "Only input packaging has been performed. All original feature columns, IDs, constant columns and missing markers are retained. Analyze them in EDA and perform appropriate feature handling in FE fitted on training data only. This is an independent random-split experiment, not reproduction of the original benchmark. Original metric: ROC-AUC; experiment metric: f1_macro. Use the provided frozen split. Do not repartition. Test labels are evaluator-only. No final refit on validation data.",
+  "target": "target",
+  "problem_type": "classification",
+  "metric": "f1_macro",
+  "seed": 42,
+  "split": {
+    "strategy": "frozen",
+    "origin": "provided_test"
+  },
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  }
+}

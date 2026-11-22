@@ -1,0 +1,43 @@
+{
+  "name": "kaggle25__dry_bean",
+  "dataset_id": "https://www.kaggle.com/datasets/muratkokludataset/dry-bean-dataset",
+  "target": "Class",
+  "problem_type": "classification",
+  "metric": "accuracy",
+  "seed": 42,
+  "description": "16个已提取的形状特征；无需加载图像；检查完全重复行。  Exact duplicate original records collapsed keeping source-first; distinct IDs/equal reduced features retained. This changes original duplicate weights. Fixed 60/20/20 split; stratify classification. No fitted preprocessing before split. Use the frozen split; never access test labels or refit on validation.",
+  "split": {
+    "strategy": "frozen",
+    "origin": "random"
+  },
+  "categorical_columns": [],
+  "files": {
+    "train": "train.csv",
+    "validation": "validation.csv",
+    "test_features": "test_features.csv",
+    "test_labels": "test_labels.csv"
+  },
+  "source_dataset": "dry_bean",
+  "benchmark_role": "benchmark_adaptation",
+  "recommended_config_overrides": {
+    "proxy_train_min_rows": 2,
+    "core_validation_min_rows": 2
+  },
+  "screening_protocol": {
+    "outer_split": "random",
+    "internal_split": "stratified",
+    "mcs_inference": "iid_rows"
+  },
+  "preparation_audit": "/mnt/data1/cmcui/DataAgent/datasets/kaggle25_20261103/kaggle25__dry_bean/preparation.json",
+  "preparation_audit_sha256": "9caf694295a6cd3b7e7d5a26d01d786382a0c5c1c61cecc0e5f079a4c219bef7",
+  "source_family_overlap": "",
+  "target_label_mapping": {
+    "BARBUNYA": 0,
+    "BOMBAY": 1,
+    "CALI": 2,
+    "DERMASON": 3,
+    "HOROZ": 4,
+    "SEKER": 5,
+    "SIRA": 6
+  }
+}
